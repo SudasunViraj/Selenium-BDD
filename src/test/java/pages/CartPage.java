@@ -15,4 +15,12 @@ public class CartPage extends BasePage {
 
         assertTrue(found, "Product not found in cart: " + productName);
     }
+
+        public void removeProduct(String productName) {
+        By removeBtn = By.xpath(
+                "//div[@class='cart_item' and .//div[@class='inventory_item_name' and normalize-space()='" + productName + "']]"
+                        + "//button[normalize-space()='Remove']"
+        );
+        click(removeBtn);
+    }
 }

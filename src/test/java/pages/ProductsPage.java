@@ -1,6 +1,8 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -33,4 +35,13 @@ public class ProductsPage extends BasePage {
         String actual = driver().findElement(cartBadge).getText().trim();
         assertEquals(expected, actual, "Cart badge count mismatch!");
     }
+
+        public void assertCartBadgeNotDisplayed() {
+    try {
+        driver().findElement(cartBadge).isDisplayed();
+        throw new AssertionError("Cart badge is displayed but expected NOT to be displayed!");
+    } catch (NoSuchElementException e) {
+        // Expected: badge not present
+    }
+}
 }
