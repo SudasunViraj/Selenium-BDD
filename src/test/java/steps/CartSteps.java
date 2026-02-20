@@ -15,6 +15,11 @@ public class CartSteps {
         productsPage.addProductToCart(productName);
     }
 
+    @When("user opens the cart")
+    public void user_opens_the_cart() {
+        productsPage.openCart();
+    }
+
     @Then("cart badge should show {string}")
     public void cart_badge_should_show(String count) {
         productsPage.assertCartBadgeCount(count);
@@ -22,7 +27,6 @@ public class CartSteps {
 
     @Then("cart should contain product {string}")
     public void cart_should_contain_product(String productName) {
-        productsPage.openCart();
         cartPage.assertProductInCart(productName);
     }
 }
